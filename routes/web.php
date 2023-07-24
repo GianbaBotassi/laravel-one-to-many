@@ -22,7 +22,7 @@ Route::get('/', [MainController::class, 'index'])->name('index');
 
 // Rotta per vedere dati
 Route::get('/profile/show/{id}', [LoggedController::class, 'show'])
-    ->middleware(['auth'])
+    // ->middleware(['auth'])
     ->name('show');
 
 
