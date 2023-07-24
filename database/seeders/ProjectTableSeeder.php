@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Project;
+use App\Models\Type;
 
 class ProjectTableSeeder extends Seeder
 {
@@ -17,15 +18,18 @@ class ProjectTableSeeder extends Seeder
     public function run()
     {
 
-        // Esempio di creazione singola
-        //     $data = new Project();
-        //     $data->name = "ciao";
-        //     $data->description = "eccoci";
-        //     $data->private = true;
-        //     $data->collaborators = 10;
+        // Creazione di tot progetti
+        $projects = Project::factory()->count(10)->make();
 
-        //     $data->save();
+        // Ciclo i vari progetti creati
+        foreach ($projects as $project) {
 
-        Project::factory()->count(10)->create();
+            // Prendo un modello type a caso
+            $type = Type::inRandomOrder()->first();
+            // Il type_id sarà uguale all'id del modello preso a caso
+            // N.B. inRandomOrder prende il modello, poi bisogna specificare il dato (->id)
+            $project->type_id = $type->id;
+            $project->save();
+        }
     }
 }
