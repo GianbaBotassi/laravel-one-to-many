@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('name', 100)->unique();
             $table->text('description')->nullable();
-            $table->boolean('private');
+            $table->boolean('private')->default(false);
             $table->unsignedTinyInteger('collaborators');
 
             $table->timestamps();

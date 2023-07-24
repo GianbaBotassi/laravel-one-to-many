@@ -13,7 +13,8 @@ class Project extends Model
         'name',
         'description',
         'private',
-        'collaborators'
+        'collaborators',
+        'type_id'
     ];
 
     public function type()

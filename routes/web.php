@@ -20,10 +20,20 @@ use App\Http\Controllers\LoggedController;
 // Rotta index accessibile a tutti
 Route::get('/', [MainController::class, 'index'])->name('index');
 
+Route::get('profile/create', [LoggedController::class, 'create'])
+    ->name('create');
+Route::post('profile/store', [LoggedController::class, 'store'])->name('store');
+
 // Rotta per vedere dati
 Route::get('/profile/show/{id}', [LoggedController::class, 'show'])
     // ->middleware(['auth'])
     ->name('show');
+
+
+Route::get('profile/edits{id}', [MainController::class, 'edits'])->name('edits');
+
+// Rotta per update
+Route::put('/profile/update/{id}', [LoggedController::class, 'update'])->name('update');
 
 
 Route::get('/dashboard', function () {
